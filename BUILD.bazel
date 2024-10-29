@@ -1,0 +1,31 @@
+load("@contrib_rules_jvm//java:defs.bzl", "java_export")
+
+# CASE 1
+java_export(
+    name = "sealed",
+    srcs = [
+        "src/Sealed.java",
+    ],
+    tags = [
+        "no-javadocs",
+    ],
+    maven_coordinates = "abc:abc:1.0.0",
+)
+
+# CASE 2
+# java_library(
+#     name = "sealed",
+#     srcs = [
+#         "src/Sealed.java",
+#     ],
+# )
+
+java_library(
+    name = "test",
+    srcs = [
+        "src/Test.java",
+    ],
+    deps = [
+        ":sealed",
+    ],
+)
